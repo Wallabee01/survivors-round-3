@@ -1,0 +1,6 @@
+res://scenes/player/player.tscn
+res://scenes/player/player.gd
+res://scenes/main/main.tscn
+res://resources/tilesets/environment.tres
+res://scenes/game_camera/game_camera.tscn
+res://scenes/game_camera/game_camera.gd
