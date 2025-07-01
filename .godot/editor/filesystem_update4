@@ -1,6 +1,10 @@
-res://scenes/player/player.tscn
-res://scenes/player/player.gd
-res://scenes/main/main.tscn
 res://resources/tilesets/environment.tres
-res://scenes/game_camera/game_camera.tscn
+res://scenes/enemies/basic_enemy/basic_enemy.tscn
+res://scenes/enemies/basic_enemy/basic_enemy.gd
+res://scenes/main/main.tscn
+res://scenes/player/player.tscn
+res://scenes/abilities/sword_ability/sword_ability.tscn
+res://scenes/abilities/sword_ability/sword_ability_controller.tscn
 res://scenes/game_camera/game_camera.gd
+res://scenes/player/player.gd
+res://scenes/abilities/sword_ability/sword_ability_controller.gd
