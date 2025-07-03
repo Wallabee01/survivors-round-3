@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 75
+const MAX_SPEED = 50
 
 
 func _ready():
@@ -11,6 +11,7 @@ func _process(_delta):
 	var direction = get_direction_to_player()
 	velocity = direction * MAX_SPEED
 	move_and_slide()
+
 
 func get_direction_to_player():
 	var player_node = get_tree().get_first_node_in_group('player') as Node2D

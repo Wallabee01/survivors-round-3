@@ -10,6 +10,7 @@ height = 12.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
+motion_mode = 1
 script = ExtResource("1_gn0gy")
 
 [node name="AbilityManager" type="Node" parent="."]

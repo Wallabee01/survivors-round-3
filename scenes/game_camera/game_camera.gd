@@ -1,6 +1,6 @@
 extends Camera2D
 
-const SMOOTHING = 10
+const SMOOTHING = 20
 
 var target_position = Vector2.ZERO
 
