@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://t42a1abogtkb"]
+[gd_scene load_steps=8 format=3 uid="uid://t42a1abogtkb"]
 
 [ext_resource type="Texture2D" uid="uid://bhfkno2vvqvqh" path="res://assets/abilities/long_sword.png" id="1_jt4tl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pgu8"]
-size = Vector2(36, 36)
+[ext_resource type="Script" path="res://scenes/abilities/sword_ability/sword_ability.gd" id="1_whb5r"]
+[ext_resource type="PackedScene" uid="uid://cwsdjou67uaqo" path="res://scenes/components/hitbox_component.tscn" id="1_x1cwh"]
 
 [sub_resource type="Animation" id="Animation_e7x2x"]
 length = 0.001
@@ -34,7 +33,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/2/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -89,7 +88,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -105,22 +104,24 @@ _data = {
 "attack": SubResource("Animation_4tcpd")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ghok"]
+size = Vector2(36, 36)
+
 [node name="SwordAbility" type="Node2D"]
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(14, 0)
-shape = SubResource("RectangleShape2D_3pgu8")
-disabled = true
+script = ExtResource("1_whb5r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_l5ha0")
 }
 autoplay = "attack"
+
+[node name="HitboxComponent" parent="." instance=ExtResource("1_x1cwh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(14, 0)
+shape = SubResource("RectangleShape2D_5ghok")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jt4tl")
