@@ -1,8 +1,9 @@
-res://scenes/abilities/axe_ability
 res://scenes/ui
+res://resources/themes
+res://scenes/components
+res://scenes/game_objects/enemies/wizard
 res://scenes/managers
 res://resources/upgrades
-res://scenes/components
 res://scenes/autoloads
 res://scenes/game_objects/exp_vial
 res://scenes/abilities/sword_ability

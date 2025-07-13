@@ -1,16 +1,18 @@
 extends CharacterBody2D
+class_name Enemy
 
-const MAX_SPEED = 50
+@onready var visuals: Node2D = $Visuals
+@onready var velocity_component: VelocityComponent = $VelocityComponent
 
 
 func _process(_delta):
-	var direction = get_direction_to_player()
-	velocity = direction * MAX_SPEED
-	move_and_slide()
+	move()
 
 
-func get_direction_to_player():
-	var player_node = get_tree().get_first_node_in_group('player') as Node2D
-	if player_node != null: return Vector2 (player_node.global_position - global_position).normalized()
+func move():
+	velocity_component.accelerate_to_player()
+	velocity_component.move(self)
 	
-	return Vector2.ZERO
+	var move_sign = sign(velocity.x)
+	if move_sign != 0:
+		visuals.scale = Vector2(-move_sign, 1)
