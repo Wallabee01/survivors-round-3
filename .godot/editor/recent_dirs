@@ -1,10 +1,12 @@
-res://scenes/ui
-res://resources/themes
+res://scenes/autoloads
 res://scenes/components
+res://scenes/ui
+res://resources/materials
+res://resources/shaders
+res://resources/themes
 res://scenes/game_objects/enemies/wizard
 res://scenes/managers
 res://resources/upgrades
-res://scenes/autoloads
 res://scenes/game_objects/exp_vial
 res://scenes/abilities/sword_ability
 res://resources/tilesets

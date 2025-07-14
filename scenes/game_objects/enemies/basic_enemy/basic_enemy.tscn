@@ -1,12 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://cm11fvp5ubk4x"]
+[gd_scene load_steps=22 format=3 uid="uid://cm11fvp5ubk4x"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/enemies/basic_enemy/basic_enemy.gd" id="1_mlf3d"]
+[ext_resource type="AudioStream" uid="uid://cg5g87wkcq1mh" path="res://assets/audio/sfx/footstep_carpet_001.ogg" id="2_5du7u"]
+[ext_resource type="PackedScene" uid="uid://dm5cyaim2xaed" path="res://scenes/components/random_stream_player_2d_component.tscn" id="2_22xt8"]
 [ext_resource type="Texture2D" uid="uid://dv0hy8jt05old" path="res://assets/enemies/rat.png" id="2_e6sji"]
 [ext_resource type="PackedScene" uid="uid://c10pcn4go5q0r" path="res://scenes/components/health_component.tscn" id="2_vqqu0"]
 [ext_resource type="PackedScene" uid="uid://bl6en75u1aa5b" path="res://scenes/components/drop_component.tscn" id="3_eyest"]
+[ext_resource type="AudioStream" uid="uid://h0afxl0qlosf" path="res://assets/audio/sfx/footstep_carpet_000.ogg" id="3_meuam"]
 [ext_resource type="PackedScene" uid="uid://dkcaoxdxphki1" path="res://scenes/components/hurtbox_component.tscn" id="4_c31kp"]
 [ext_resource type="PackedScene" uid="uid://dmnvm8ssd8yvf" path="res://scenes/components/velocity_component.tscn" id="4_o3jij"]
 [ext_resource type="PackedScene" uid="uid://bq0aypj7ola6k" path="res://scenes/components/death_component.tscn" id="4_o17ks"]
+[ext_resource type="AudioStream" uid="uid://dnlp3mvtnlk4w" path="res://assets/audio/sfx/footstep_carpet_002.ogg" id="5_162yx"]
+[ext_resource type="PackedScene" uid="uid://b63pxjng6rjkj" path="res://scenes/components/hit_flash_component.tscn" id="5_xqow0"]
+[ext_resource type="Shader" path="res://resources/shaders/hit_flash.gdshader" id="6_7yqnx"]
+[ext_resource type="AudioStream" uid="uid://b44qd5mmpflav" path="res://assets/audio/sfx/footstep_carpet_003.ogg" id="6_aeq6v"]
+[ext_resource type="AudioStream" uid="uid://ds5okkwutvyr1" path="res://assets/audio/sfx/footstep_carpet_004.ogg" id="7_2i5qu"]
 
 [sub_resource type="Animation" id="Animation_ck7kp"]
 length = 0.001
@@ -71,6 +79,11 @@ _data = {
 "walk": SubResource("Animation_jixon")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_baj4u"]
+resource_local_to_scene = true
+shader = ExtResource("6_7yqnx")
+shader_parameter/lerp_percent = null
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0ecl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l6c0n"]
@@ -88,20 +101,27 @@ libraries = {
 }
 autoplay = "walk"
 
+[node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("2_22xt8")]
+streams = Array[AudioStream]([ExtResource("3_meuam"), ExtResource("2_5du7u"), ExtResource("5_162yx"), ExtResource("6_aeq6v"), ExtResource("7_2i5qu")])
+
 [node name="HealthComponent" parent="." instance=ExtResource("2_vqqu0")]
 
 [node name="DropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_eyest")]
 health_component = NodePath("../HealthComponent")
-drop_percent = 0.35
+drop_percent = 1.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("4_o3jij")]
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_xqow0")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_baj4u")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_o17ks")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_c31kp")]
-visible = false
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -116,6 +136,5 @@ texture = ExtResource("2_e6sji")
 offset = Vector2(0, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_l6c0n")

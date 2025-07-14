@@ -1,7 +1,4 @@
-extends CharacterBody2D
-
-@onready var visuals: Node2D = $Visuals
-@onready var velocity_component: VelocityComponent = $VelocityComponent
+extends Enemy
 
 var is_moving = false
 

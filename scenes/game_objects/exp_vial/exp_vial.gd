@@ -24,6 +24,9 @@ func on_area_entered(_other_area: Area2D):
 	#chain lets the above tweens finish before calling below tweens
 	tween.chain()
 	tween.tween_callback(collect)
+	
+	await get_tree().create_timer(0.85).timeout
+	$RandomStreamPlayer2DComponent.play_random()
 
 
 func tween_method(percent: float, start_position: Vector2):
