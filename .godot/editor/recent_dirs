@@ -1,8 +1,8 @@
 res://scenes/autoloads
-res://scenes/components
-res://scenes/ui
-res://resources/materials
 res://resources/shaders
+res://scenes/ui
+res://scenes/components
+res://resources/materials
 res://resources/themes
 res://scenes/game_objects/enemies/wizard
 res://scenes/managers

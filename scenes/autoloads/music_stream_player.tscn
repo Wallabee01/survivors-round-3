@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnf6umffoakn6"]
 
-[ext_resource type="AudioStream" uid="uid://cg5g87wkcq1mh" path="res://assets/audio/sfx/footstep_carpet_001.ogg" id="1_nm8rm"]
+[ext_resource type="AudioStream" uid="uid://mqnqmuokely3" path="res://assets/audio/music/Hear+What+They+Say.mp3" id="1_4tqtm"]
 [ext_resource type="Script" path="res://scenes/autoloads/music_stream_player.gd" id="2_in4b3"]
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer"]
 process_mode = 3
-stream = ExtResource("1_nm8rm")
-volume_db = 10.0
+stream = ExtResource("1_4tqtm")
+volume_db = -12.0
 autoplay = true
 bus = &"music"
 script = ExtResource("2_in4b3")
