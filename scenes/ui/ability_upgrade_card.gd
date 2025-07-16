@@ -46,7 +46,6 @@ func on_gui_input(event: InputEvent):
 		select_card()
 
 
-
 func on_mouse_entered():
 	if disabled: return
 	$HoverAnimationPlayer.play("hover")

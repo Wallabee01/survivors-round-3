@@ -102,6 +102,7 @@ shader = ExtResource("6_8uwf7")
 shader_parameter/lerp_percent = null
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3n5g0"]
+radius = 11.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iqn72"]
 radius = 5.0
@@ -146,7 +147,6 @@ position = Vector2(0, -8)
 texture = ExtResource("3_8ynu0")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_cniog")]
-visible = false
 position = Vector2(0, -7)
 health_component = NodePath("../HealthComponent")
 
@@ -154,6 +154,5 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("CircleShape2D_3n5g0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_iqn72")

@@ -17,6 +17,7 @@ tile_map_data = PackedByteArray("AAAnABMAAAAAAAQAAAAnABIAAAAAAAQAAAAnABEAAAAAAAQ
 tile_set = ExtResource("1_k0o6a")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -52,6 +53,12 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 text = "Play
+"
+
+[node name="UpgradesButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_vnyum")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Upgrades
 "
 
 [node name="OptionsButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_vnyum")]

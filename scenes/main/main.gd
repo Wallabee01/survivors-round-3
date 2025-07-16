@@ -4,6 +4,7 @@ extends Node
 
 var pause_menu_scene: PackedScene = preload("res://scenes/ui/pause_menu.tscn")
 
+
 func _ready():
 	%Player.health_component.died.connect(on_player_died)
 
@@ -19,3 +20,4 @@ func on_player_died():
 	add_child(end_screen_instance)
 	#_ready() is called when a child is added so when manipulating data on a newly instantiated scene, add it to the scene tree first always
 	end_screen_instance.set_defeat()
+	MetaProgression.save()

@@ -11,10 +11,14 @@ var upgrade_double_sided_axe_damage = preload("res://resources/upgrades/double_s
 var upgrade_sword_speed = preload("res://resources/upgrades/sword_speed.tres")
 var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres")
 var upgrade_player_speed = preload("res://resources/upgrades/player_speed.tres")
+var upgrade_anvil = preload("res://resources/upgrades/anvil.tres")
+var upgrade_anvil_count = preload("res://resources/upgrades/anvil_count.tres")
+var upgrade_anvil_damage = preload("res://resources/upgrades/anvil_damage.tres")
 
 
 func _ready():
 	upgrade_pool.add_item(upgrade_double_sided_axe, 10)
+	upgrade_pool.add_item(upgrade_anvil, 1000)
 	upgrade_pool.add_item(upgrade_sword_speed, 10)
 	upgrade_pool.add_item(upgrade_sword_damage, 10)
 	upgrade_pool.add_item(upgrade_player_speed, 5)
@@ -45,12 +49,15 @@ func on_upgrade_selected(upgrade: AbilityUpgrade):
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	if chosen_upgrade.id == upgrade_double_sided_axe.id:
 		upgrade_pool.add_item(upgrade_double_sided_axe_damage, 10)
+	elif chosen_upgrade.id == upgrade_anvil.id:
+		upgrade_pool.add_item(upgrade_anvil_count, 10)
+		upgrade_pool.add_item(upgrade_anvil_damage, 1000)
 
 
 func pick_upgrades() -> Array:
 	var chosen_upgrades: Array[AbilityUpgrade] = []
 	
-	for i in 2:
+	for i in 3:
 		if upgrade_pool.items.size() == chosen_upgrades.size(): break
 		
 		var chosen_upgrade = upgrade_pool.pick_item(chosen_upgrades)

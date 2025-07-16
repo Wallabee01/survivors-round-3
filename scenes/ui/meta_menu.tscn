@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnjqrdasn7nol"]
+
+[ext_resource type="Script" path="res://scenes/ui/meta_menu.gd" id="1_s1k6f"]
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="2_ld3sx"]
+[ext_resource type="PackedScene" uid="uid://b37x5hnftburb" path="res://scenes/ui/sound_button.tscn" id="2_o85h1"]
+[ext_resource type="Resource" uid="uid://h76druvybk4c" path="res://resources/meta_upgrades/exp_gain.tres" id="3_5ehq0"]
+[ext_resource type="Resource" uid="uid://4ekyav1yjtcs" path="res://resources/meta_upgrades/health_regen.tres" id="4_rsi6v"]
+
+[node name="MetaMenu" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_s1k6f")
+upgrades = Array[ExtResource("2_ld3sx")]([ExtResource("3_5ehq0"), ExtResource("4_rsi6v")])
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 624.0
+offset_bottom = 344.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/h_separation = 36
+theme_override_constants/v_separation = 16
+columns = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+offset_right = 56.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="BackButton" parent="MarginContainer" instance=ExtResource("2_o85h1")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Back"

@@ -11,7 +11,7 @@ func move(character_body: CharacterBody2D):
 	character_body.velocity = velocity
 	character_body.move_and_slide()
 	#reassign velocity to character_body.velocity in case move_and_slide encountered a collision and affected velocity
-	velocity = character_body.velocity
+	velocity = Vector2(min(character_body.velocity.x, max_speed), min(character_body.velocity.y, max_speed))
 
 
 func accelerate_to_player():
